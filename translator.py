@@ -1,4 +1,4 @@
-import UI2
+import UI3
 import sys
 import time
 import keyboard
@@ -15,7 +15,7 @@ language = 'zh-tw'
 
 
 # 介面功能
-class MyWindow(QtWidgets.QWidget, UI2.Ui_Form):
+class MyWindow(QtWidgets.QWidget, UI3.Ui_Form):
 
     def __init__(self, parent=None):
         super(MyWindow, self).__init__(parent)
@@ -25,12 +25,13 @@ class MyWindow(QtWidgets.QWidget, UI2.Ui_Form):
         self.t_replace.signal.connect(self.upgrade)
 
     def upgrade(self, txt):
-        self.lineEdit.setText(txt)
+        self.plainTextEdit.setPlainText(txt)
 
     def click(self):
-        if self.lineEdit.text() != '':
+        if self.plainTextEdit.toPlainText() != '':
             try:
-                txt_tr = tr.translate(self.lineEdit.text(), dest=language).text
+                txt_tr = tr.translate(
+                    self.plainTextEdit.toPlainText(), dest=language).text
             except:
                 txt_tr = 'Not text'
             win32clipboard.OpenClipboard()
@@ -39,7 +40,7 @@ class MyWindow(QtWidgets.QWidget, UI2.Ui_Form):
                 win32clipboard.CF_UNICODETEXT, str(txt_tr))
             # win32clipboard.SetClipboardText(str(txt_tr))
             win32clipboard.CloseClipboard()
-            self.lineEdit.setText(str(txt_tr))
+            self.plainTextEdit.setPlainText(str(txt_tr))
 
     def zh_tw(self):
         self.enable()
