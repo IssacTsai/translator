@@ -1,4 +1,4 @@
-import UI3
+import UI4
 import sys
 import time
 import keyboard
@@ -12,10 +12,11 @@ from googletrans import Translator
 # 建立翻譯器
 tr = Translator()
 language = 'zh-tw'
+pause = 0
 
 
 # 介面功能
-class MyWindow(QtWidgets.QWidget, UI3.Ui_Form):
+class MyWindow(QtWidgets.QWidget, UI4.Ui_Form):
 
     def __init__(self, parent=None):
         super(MyWindow, self).__init__(parent)
@@ -70,6 +71,23 @@ class MyWindow(QtWidgets.QWidget, UI3.Ui_Form):
         language = 'zh-cn'
         self.click()
 
+    def pause(self):
+        global pause
+        if pause == 0:
+            self.pushButton_5.setStyleSheet("background-color : red")
+            pause = 1-pause
+            self.clear()
+        else:
+            self.pushButton_5.setStyleSheet("background-color : green")
+            pause = 1-pause
+            self.clear()
+
+    def clear(self):
+        win32clipboard.OpenClipboard()
+        win32clipboard.EmptyClipboard()
+        win32clipboard.CloseClipboard()
+        self.plainTextEdit.setPlainText('')
+
     def enable(self):
         self.pushButton_1.setEnabled(True)
         self.pushButton_2.setEnabled(True)
@@ -89,7 +107,7 @@ class trans(QThread):
     def run(self):
         data = ''
         while (1):
-            if keyboard.is_pressed('ctrl') and keyboard.is_pressed('c'):
+            if keyboard.is_pressed('ctrl') and keyboard.is_pressed('c') and pause != 1:
                 global language
                 time.sleep(0.1)
 
@@ -112,6 +130,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     Form = MyWindow()
     Form.setWindowTitle("Translator")
-    Form.setWindowFlags(Qt.WindowStaysOnTopHint)
+    Form.setWindowFlags(Qt.WindowMinimizeButtonHint |
+                        Qt.WindowCloseButtonHint | Qt.WindowStaysOnTopHint)
     Form.show()
     sys.exit(app.exec_())

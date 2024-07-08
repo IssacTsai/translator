@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'UI3.ui'
+# Form implementation generated from reading ui file 'UI4.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -14,20 +14,43 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(174, 210)
+        Form.setWindowModality(QtCore.Qt.NonModal)
+        Form.resize(175, 240)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Form.sizePolicy().hasHeightForWidth())
         Form.setSizePolicy(sizePolicy)
-        Form.setMinimumSize(QtCore.QSize(174, 210))
+        Form.setMinimumSize(QtCore.QSize(175, 240))
         Form.setMaximumSize(QtCore.QSize(1000, 1000))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         Form.setFont(font)
+        Form.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        Form.setLocale(QtCore.QLocale(
+            QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
         self.gridLayout = QtWidgets.QGridLayout(Form)
+        self.gridLayout.setContentsMargins(10, 10, 10, 10)
+        self.gridLayout.setSpacing(5)
         self.gridLayout.setObjectName("gridLayout")
+        self.pushButton_5 = QtWidgets.QPushButton(Form)
+        self.pushButton_5.setMinimumSize(QtCore.QSize(75, 25))
+        self.pushButton_5.setMaximumSize(QtCore.QSize(16777215, 25))
+        self.pushButton_5.setStyleSheet("background-color : green")
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(16)
+        self.pushButton_5.setObjectName("pushButton_5")
+        self.gridLayout.addWidget(self.pushButton_5, 0, 0, 1, 1)
+        self.pushButton_6 = QtWidgets.QPushButton(Form)
+        self.pushButton_6.setMinimumSize(QtCore.QSize(75, 25))
+        self.pushButton_6.setMaximumSize(QtCore.QSize(16777215, 25))
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(16)
+        self.pushButton_6.setObjectName("pushButton_6")
+        self.gridLayout.addWidget(self.pushButton_6, 0, 1, 1, 1)
         self.pushButton_1 = QtWidgets.QPushButton(Form)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -37,15 +60,15 @@ class Ui_Form(object):
             self.pushButton_1.sizePolicy().hasHeightForWidth())
         self.pushButton_1.setSizePolicy(sizePolicy)
         self.pushButton_1.setMinimumSize(QtCore.QSize(75, 75))
-        self.pushButton_1.setMaximumSize(QtCore.QSize(16777215, 90))
+        self.pushButton_1.setMaximumSize(QtCore.QSize(16777215, 75))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
-        font.setPointSize(18)
+        font.setPointSize(16)
         self.pushButton_1.setFont(font)
         self.pushButton_1.setIconSize(QtCore.QSize(16, 16))
         self.pushButton_1.setAutoRepeatDelay(300)
-        self.pushButton_1.setObjectName("pushButton")
-        self.gridLayout.addWidget(self.pushButton_1, 0, 0, 1, 1)
+        self.pushButton_1.setObjectName("pushButton_1")
+        self.gridLayout.addWidget(self.pushButton_1, 1, 0, 1, 1)
         self.pushButton_4 = QtWidgets.QPushButton(Form)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -55,13 +78,13 @@ class Ui_Form(object):
             self.pushButton_4.sizePolicy().hasHeightForWidth())
         self.pushButton_4.setSizePolicy(sizePolicy)
         self.pushButton_4.setMinimumSize(QtCore.QSize(75, 75))
-        self.pushButton_4.setMaximumSize(QtCore.QSize(16777215, 90))
+        self.pushButton_4.setMaximumSize(QtCore.QSize(16777215, 75))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
-        font.setPointSize(18)
+        font.setPointSize(16)
         self.pushButton_4.setFont(font)
         self.pushButton_4.setObjectName("pushButton_4")
-        self.gridLayout.addWidget(self.pushButton_4, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_4, 1, 1, 1, 1)
         self.pushButton_2 = QtWidgets.QPushButton(Form)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -71,13 +94,13 @@ class Ui_Form(object):
             self.pushButton_2.sizePolicy().hasHeightForWidth())
         self.pushButton_2.setSizePolicy(sizePolicy)
         self.pushButton_2.setMinimumSize(QtCore.QSize(75, 75))
-        self.pushButton_2.setMaximumSize(QtCore.QSize(16777215, 90))
+        self.pushButton_2.setMaximumSize(QtCore.QSize(16777215, 75))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
-        font.setPointSize(18)
+        font.setPointSize(16)
         self.pushButton_2.setFont(font)
         self.pushButton_2.setObjectName("pushButton_2")
-        self.gridLayout.addWidget(self.pushButton_2, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_2, 2, 0, 1, 1)
         self.pushButton_3 = QtWidgets.QPushButton(Form)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -87,15 +110,15 @@ class Ui_Form(object):
             self.pushButton_3.sizePolicy().hasHeightForWidth())
         self.pushButton_3.setSizePolicy(sizePolicy)
         self.pushButton_3.setMinimumSize(QtCore.QSize(75, 75))
-        self.pushButton_3.setMaximumSize(QtCore.QSize(16777215, 90))
+        self.pushButton_3.setMaximumSize(QtCore.QSize(16777215, 75))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
-        font.setPointSize(18)
+        font.setPointSize(16)
         self.pushButton_3.setFont(font)
         self.pushButton_3.setObjectName("pushButton_3")
-        self.gridLayout.addWidget(self.pushButton_3, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_3, 2, 1, 1, 1)
         self.plainTextEdit = QtWidgets.QPlainTextEdit(Form)
-        self.plainTextEdit.setMinimumSize(QtCore.QSize(156, 30))
+        self.plainTextEdit.setMinimumSize(QtCore.QSize(155, 30))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.plainTextEdit.setFont(font)
@@ -110,25 +133,29 @@ class Ui_Form(object):
         self.plainTextEdit.setLineWrapMode(
             QtWidgets.QPlainTextEdit.WidgetWidth)
         self.plainTextEdit.setReadOnly(True)
+        self.plainTextEdit.setPlainText("")
         self.plainTextEdit.setBackgroundVisible(False)
         self.plainTextEdit.setObjectName("plainTextEdit")
-        self.gridLayout.addWidget(self.plainTextEdit, 2, 0, 1, 2)
+        self.gridLayout.addWidget(self.plainTextEdit, 3, 0, 1, 2)
 
         self.retranslateUi(Form)
         self.pushButton_1.clicked.connect(Form.zh_tw)  # type: ignore
         self.pushButton_4.clicked.connect(Form.zh_cn)  # type: ignore
         self.pushButton_2.clicked.connect(Form.en)  # type: ignore
         self.pushButton_3.clicked.connect(Form.jp)  # type: ignore
+        self.pushButton_5.clicked.connect(Form.pause)  # type: ignore
+        self.pushButton_6.clicked.connect(Form.clear)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "Translator"))
+        self.pushButton_5.setText(_translate("Form", "pause"))
+        self.pushButton_6.setText(_translate("Form", "clear"))
         self.pushButton_1.setText(_translate("Form", "zh_tw"))
         self.pushButton_4.setText(_translate("Form", "zh_cn"))
         self.pushButton_2.setText(_translate("Form", "en"))
         self.pushButton_3.setText(_translate("Form", "jp"))
-        self.plainTextEdit.setPlainText(_translate("Form", ""))
 
 
 if __name__ == "__main__":
