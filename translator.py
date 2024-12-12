@@ -14,7 +14,6 @@ tr = Translator()
 language = 'zh-tw'
 pause = 0
 
-
 # 介面功能
 class MyWindow(QtWidgets.QWidget, UI4.Ui_Form):
 
@@ -31,15 +30,12 @@ class MyWindow(QtWidgets.QWidget, UI4.Ui_Form):
     def click(self):
         if self.plainTextEdit.toPlainText() != '':
             try:
-                txt_tr = tr.translate(
-                    self.plainTextEdit.toPlainText(), dest=language).text
+                txt_tr = tr.translate(self.plainTextEdit.toPlainText(), dest=language).text
             except:
                 txt_tr = 'Not text'
             win32clipboard.OpenClipboard()
             win32clipboard.EmptyClipboard()
-            win32clipboard.SetClipboardData(
-                win32clipboard.CF_UNICODETEXT, str(txt_tr))
-            # win32clipboard.SetClipboardText(str(txt_tr))
+            win32clipboard.SetClipboardData(win32clipboard.CF_UNICODETEXT, str(txt_tr))
             win32clipboard.CloseClipboard()
             self.plainTextEdit.setPlainText(str(txt_tr))
 
@@ -75,11 +71,11 @@ class MyWindow(QtWidgets.QWidget, UI4.Ui_Form):
         global pause
         if pause == 0:
             self.pushButton_5.setStyleSheet("background-color : red")
-            pause = 1-pause
+            pause = 1 - pause
             self.clear()
         else:
             self.pushButton_5.setStyleSheet("background-color : green")
-            pause = 1-pause
+            pause = 1 - pause
             self.clear()
 
     def clear(self):
@@ -94,36 +90,39 @@ class MyWindow(QtWidgets.QWidget, UI4.Ui_Form):
         self.pushButton_3.setEnabled(True)
         self.pushButton_4.setEnabled(True)
 
-
 class trans(QThread):
-    # 建立執行續
     signal = pyqtSignal(str)
 
-    # 初始化
     def __init__(self):
         super(trans, self).__init__()
+        self.running = True
+        self.pause = False
 
-    # 主功能
+    def stop(self):
+        self.running = False
+
     def run(self):
         data = ''
-        while (1):
-            if keyboard.is_pressed('ctrl') and keyboard.is_pressed('c') and pause != 1:
+        while self.running:
+            if keyboard.is_pressed('ctrl') and keyboard.is_pressed('c') and not self.pause:
                 global language
                 time.sleep(0.1)
-
-                # get clipboard data
-                win32clipboard.OpenClipboard()
-                data = win32clipboard.GetClipboardData()
                 try:
+                    win32clipboard.OpenClipboard()
+                    data = win32clipboard.GetClipboardData()
+                    win32clipboard.CloseClipboard()
                     txt_tr = tr.translate(data, dest=language).text
                 except:
                     txt_tr = 'Not text'
-                win32clipboard.EmptyClipboard()
-                win32clipboard.SetClipboardData(
-                    win32clipboard.CF_UNICODETEXT, str(txt_tr))
-                win32clipboard.CloseClipboard()
+                try:
+                    win32clipboard.OpenClipboard()
+                    win32clipboard.EmptyClipboard()
+                    win32clipboard.SetClipboardData(win32clipboard.CF_UNICODETEXT, str(txt_tr))
+                    win32clipboard.CloseClipboard()
+                except:
+                    pass
                 self.signal.emit(txt_tr)
-
+            time.sleep(0.01)  # reduce CPU usage
 
 # 主程式
 if __name__ == "__main__":
