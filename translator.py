@@ -20,6 +20,7 @@ class MyWindow(QtWidgets.QWidget, UI4.Ui_Form):
     def __init__(self, parent=None):
         super(MyWindow, self).__init__(parent)
         self.setupUi(self)
+        self.pushButton_1.setEnabled(False)
         self.t_replace = trans()
         self.t_replace.start()
         self.t_replace.signal.connect(self.upgrade)
@@ -69,14 +70,14 @@ class MyWindow(QtWidgets.QWidget, UI4.Ui_Form):
 
     def pause(self):
         global pause
-        if pause == 0:
+        pause = 1 - pause
+        if pause:
             self.pushButton_5.setStyleSheet("background-color : red")
-            pause = 1 - pause
-            self.clear()
+            self.t_replace.pause = True
         else:
             self.pushButton_5.setStyleSheet("background-color : green")
-            pause = 1 - pause
-            self.clear()
+            self.t_replace.pause = False
+        self.clear()
 
     def clear(self):
         win32clipboard.OpenClipboard()
@@ -100,6 +101,7 @@ class trans(QThread):
 
     def stop(self):
         self.running = False
+        self.pause = True
 
     def run(self):
         data = ''
